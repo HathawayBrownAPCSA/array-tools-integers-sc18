@@ -13,7 +13,9 @@ public class IntegerArrayTools
   private int[] arrayData;
   private int arrayCount;
   public final int MAX_NUMS = 100;
-  
+  private int max;
+  private int min;
+  private int[] minMax = new int[4];
   // ------------------ CONSTRUCTOR ----------------------------
   /** The contsructor merely creates the array.
     * It does not fill it with any data.  That is left up to 
@@ -32,6 +34,69 @@ public class IntegerArrayTools
     return arrayCount;
   }
   
+  /**
+   * Finds the minimum and maximum numbers of an array and the index for each
+   * Assigns them to an array called minMax
+   */
+  public void findMinMaxWithIndex()
+  {
+	  max = arrayData[0];
+	  min = arrayData[0];
+	  int xIn = 0;
+	  int nIn = 0;
+	  for(int i = 0; i < getCount(); i++)
+	  {
+		 	 if(arrayData[i] > max)
+			 {
+				 max = arrayData[i];
+				 xIn = i;
+			 }
+		 	 else if(arrayData[i] < min)
+		 	 {
+		 		min = arrayData[i];
+				nIn = i;
+		 	 }
+	  }
+	  
+	  minMax [0] = max;
+	  minMax [1] = xIn;
+	  minMax [2] = min;
+	  minMax [3] = nIn;
+
+  }
+  
+  /**
+   * @return max number stored in minMax at 0
+   */
+  public int getMax()
+  {
+	  return minMax[0];
+  }
+  
+  /**
+   * @return max index stored in minMax at 1
+   */
+  public int getMaxIndex()
+  {
+	  return minMax[1];
+  }
+  
+  /**
+   * @return min number stored in minMax at 2
+   */
+  public int getMin()
+  {
+	  return minMax[2];
+  }
+  
+  /**
+   * @return min index stored in minMax at 3
+   */
+  public int getMinIndex()
+  {
+	  return minMax[3];
+  }
+
   // ------------------- METHODS TO FILL THE ARRAY -------------------------
   /** Adds an element to the end of the array. 
     * @param n The element to add
@@ -106,18 +171,19 @@ public class IntegerArrayTools
   public static void main (String[] args)
   {
     IntegerArrayTools myArray = new IntegerArrayTools();
-    //myArray.fillRandom(100, 12);
-    myArray.fillKeyboard ();
+    myArray.fillRandom(100, 12);
+   // myArray.fillKeyboard ();
     myArray.printArray ();
     System.out.println ("There are " + myArray.getCount() + " integers in the array.");
     System.out.println ("The sum is " + myArray.sumArray());
     
     // Un-comment these lines one at a time after you have written the appropriate code
-//    System.out.println ("The largest item is " + myArray.getMax() ); 
-//    System.out.println ("The largest item is at index " + myArray.getMaxIndex());
+   myArray.findMinMaxWithIndex();
+   System.out.println ("The largest item is " + myArray.getMax() ); 
+   System.out.println ("The largest item is at index " + myArray.getMaxIndex());
 
-//    System.out.println ("The smallest item is " + myArray.getMin() );
-//    System.out.println ("The smallest item is at index " + myArray.getMinIndex());
+   System.out.println ("The smallest item is " + myArray.getMin() );
+   System.out.println ("The smallest item is at index " + myArray.getMinIndex());
     
   }
 }
