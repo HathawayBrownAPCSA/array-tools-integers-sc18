@@ -1,0 +1,22 @@
+Hi Sara,
+
+A good solution to this question - to do it using only one loop.
+Very effective code.
+
+A couple of design questions, though.
+You have private instance variables max, min, and the array minMax.  
+You store the maximum and minimum values in two places.
+These are redundant.  You should either store the maximum value in max or in minMax[0], but not both.
+Having the same value in two places is asking for trouble - if someone modifies the code, they would
+  be likely to change one but not the other.
+
+Fully functional, however, and very efficient to loop only once to get all four values!
+
+10/10
+
+
+** Update Feb. 1
+I still can't see the StringArrayTools.  Would you please commit them to master?
+
+Thanks,
+MB
