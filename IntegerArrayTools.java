@@ -13,9 +13,7 @@ public class IntegerArrayTools
   private int[] arrayData;
   private int arrayCount;
   public final int MAX_NUMS = 100;
-  private int max;
-  private int min;
-  private int[] minMax = new int[4];
+ private int[] minMax = new int[4];
   // ------------------ CONSTRUCTOR ----------------------------
   /** The contsructor merely creates the array.
     * It does not fill it with any data.  That is left up to 
@@ -40,29 +38,23 @@ public class IntegerArrayTools
    */
   public void findMinMaxWithIndex()
   {
-	  max = arrayData[0];
-	  min = arrayData[0];
-	  int xIn = 0;
-	  int nIn = 0;
+	  minMax[0] = arrayData[0];
+	  minMax[2] = arrayData[0];
+	  minMax[1] = 0;
+	  minMax[3] = 0;
 	  for(int i = 0; i < getCount(); i++)
 	  {
-		 	 if(arrayData[i] > max)
+		 	 if(arrayData[i] > minMax[0])
 			 {
-				 max = arrayData[i];
-				 xIn = i;
+				 minMax[0] = arrayData[i];
+				 minMax[1] = i;
 			 }
-		 	 else if(arrayData[i] < min)
+		 	 else if(arrayData[i] < minMax[2])
 		 	 {
-		 		min = arrayData[i];
-				nIn = i;
+		 		minMax[2] = arrayData[i];
+				minMax[3] = i;
 		 	 }
 	  }
-	  
-	  minMax [0] = max;
-	  minMax [1] = xIn;
-	  minMax [2] = min;
-	  minMax [3] = nIn;
-
   }
   
   /**
